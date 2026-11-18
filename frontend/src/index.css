@@ -1,0 +1,410 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 min-h-screen antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Print styling */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+
+
+
+/* MoryaBuild — Budget & Expenses page */
+
+.be-page {
+  padding: 28px;
+  min-height: 100%;
+  color: #1f2937;
+  background: #f7f8fc;
+  font-family: Inter, Arial, sans-serif;
+}
+
+.be-header,
+.be-section-heading,
+.be-list-heading,
+.be-progress-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.be-header {
+  margin-bottom: 24px;
+}
+
+.be-eyebrow {
+  margin: 0 0 8px;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.be-header h1 {
+  margin: 0;
+  color: #14213d;
+  font-size: clamp(25px, 3vw, 32px);
+}
+
+.be-muted {
+  color: #718096;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.be-header .be-muted {
+  margin: 8px 0 0;
+}
+
+.be-tag {
+  padding: 9px 14px;
+  border-radius: 20px;
+  background: #e9f6ef;
+  color: #18794e;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.be-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.be-card {
+  min-width: 0;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #e8ebf2;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(26, 40, 70, 0.035);
+}
+
+.be-stat-label {
+  display: block;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.be-stats .be-card > strong {
+  display: block;
+  margin: 12px 0;
+  color: #14213d;
+  font-size: 23px;
+  overflow-wrap: anywhere;
+}
+
+.be-stats .be-card > .be-danger {
+  color: #dc2626;
+}
+
+.be-budget-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #718096;
+  font-size: 12px;
+}
+
+.be-page input,
+.be-page select {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 11px 12px;
+  border: 1px solid #dce2eb;
+  border-radius: 8px;
+  background: #fff;
+  color: #334155;
+  font: inherit;
+  font-size: 13px;
+}
+
+.be-page input:focus,
+.be-page select:focus {
+  border-color: #3478f6;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 120, 246, 0.1);
+}
+
+.be-progress-card {
+  margin-bottom: 24px;
+}
+
+.be-progress-heading {
+  margin-bottom: 14px;
+}
+
+.be-progress-heading h2,
+.be-section h2 {
+  margin: 0;
+  color: #14213d;
+  font-size: 18px;
+}
+
+.be-progress-heading strong {
+  color: #2563eb;
+}
+
+.be-progress-track {
+  height: 9px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #e8edf5;
+}
+
+.be-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: #2563eb;
+  transition: width 0.25s ease;
+}
+
+.be-progress-fill.be-progress-over {
+  background: #dc2626;
+}
+
+.be-section {
+  margin-bottom: 24px;
+}
+
+.be-section-heading .be-muted,
+.be-list-heading .be-muted {
+  margin: 7px 0 0;
+}
+
+.be-form {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.be-form > label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.be-form-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 10px;
+}
+
+.be-primary-button,
+.be-secondary-button {
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.be-primary-button {
+  background: #2563eb;
+  color: #fff;
+}
+
+.be-primary-button:hover {
+  background: #1d4ed8;
+}
+
+.be-secondary-button {
+  background: #eef2f7;
+  color: #334155;
+}
+
+.be-message {
+  margin: 14px 0 0;
+  color: #18794e;
+  font-size: 13px;
+}
+
+.be-list-heading {
+  margin-bottom: 22px;
+}
+
+.be-filters {
+  display: flex;
+  gap: 10px;
+  width: min(100%, 480px);
+}
+
+.be-filters input {
+  flex: 1;
+}
+
+.be-filters select {
+  max-width: 160px;
+}
+
+.be-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.be-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.be-table th {
+  padding: 13px 12px;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 11px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.be-table td {
+  padding: 16px 12px;
+  border-bottom: 1px solid #edf0f5;
+  color: #475569;
+  font-size: 13px;
+}
+
+.be-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.be-table td strong,
+.be-table td small {
+  display: block;
+}
+
+.be-table td strong {
+  margin-bottom: 5px;
+  color: #24324b;
+}
+
+.be-table td small {
+  color: #8290a5;
+  font-size: 12px;
+}
+
+.be-table .be-amount {
+  color: #14213d;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.be-status {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.be-status-paid {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.be-status-pending {
+  background: #fff3cd;
+  color: #92400e;
+}
+
+.be-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.be-actions button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.be-actions .be-delete {
+  color: #dc2626;
+}
+
+.be-table .be-empty {
+  padding: 35px;
+  text-align: center;
+  color: #718096;
+}
+
+@media (max-width: 1100px) {
+  .be-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .be-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .be-page {
+    padding: 16px;
+  }
+
+  .be-stats,
+  .be-form {
+    grid-template-columns: 1fr;
+  }
+
+  .be-header,
+  .be-list-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .be-filters {
+    width: 100%;
+  }
+
+  .be-section {
+    padding: 16px;
+  }
+}
